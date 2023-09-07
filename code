@@ -1,0 +1,34 @@
+import torch
+from transformers import pipeline
+
+# Load the translation model (English to Hindi)
+translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-hi")
+
+# Define a function to convert the translation to Hinglish
+def to_hinglish(english_text, max_length=100):
+    # Perform English to Hindi translation
+    hindi_translation = translator(english_text, max_length=max_length)[0]['translation_text']
+    
+    # Replace some common English words/phrases with Hinglish equivalents
+    hinglish_translation = hindi_translation.replace("definitely", "bilkul")
+    hinglish_translation = hinglish_translation.replace("comment section", "comment section mein")
+    hinglish_translation = hinglish_translation.replace("big video", "bada video")
+    hinglish_translation = hinglish_translation.replace("all the products", "sare products")
+    hinglish_translation = hinglish_translation.replace("waiting for", "intezar kar raha tha")
+    hinglish_translation = hinglish_translation.replace("my bag", "meri bag")
+    
+    return hinglish_translation
+
+# Sample inputs
+inputs = [
+    "Definitely share your feedback in the comment section.",
+    "So even if it's a big video, I will clearly mention all the products.",
+    "I was waiting for my bag.",
+]
+
+# Translate to Hinglish and print the outputs
+for input_text in inputs:
+    hinglish_output = to_hinglish(input_text)
+    print("Input:", input_text)
+    print("Hinglish Output:", hinglish_output)
+    print()
