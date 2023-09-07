@@ -18,7 +18,7 @@ This Python-based project aims to create a Hinglish translation model that conve
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/hinglish-translation.git
+   git clone https://github.com/yamini/hinglish-translation.git
 
 1.Install the required dependencies:
   pip install transformers  # Make sure you have PyTorch installed as well
